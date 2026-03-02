@@ -100,6 +100,7 @@ class MicroscopeGUI:
         self.magnitude_var.trace_add("write", lambda *args: self.update_estimated_size())
         self.update_estimated_size()  # Initial calculation
 
+        self.original_image = None
         self.displayed_image = None
 
         # Scale bar image cache
@@ -633,10 +634,10 @@ class MicroscopeGUI:
             self.log_event("Image capture cancelled by user")
             return
 
-        if self.displayed_image is not None:
+        if self.original_image is not None:
             try:
                 # Save image using image service
-                self.file_service.save_image(self.displayed_image, file_path)
+                self.file_service.save_image(self.original_image, file_path)
                 # Remember the directory for next time
                 self.last_save_directory = os.path.dirname(file_path)
                 self.log_event(f"Image captured and saved to: {file_path}")
@@ -791,6 +792,7 @@ class MicroscopeGUI:
                 # Use INTER_AREA for downscaling
                 resized_image = cv2.resize(cv_image, (new_width, new_height), interpolation=cv2.INTER_AREA)
 
+            self.original_image = cv_image
             self.displayed_image = resized_image
 
             # Add scale bar overlay if enabled
