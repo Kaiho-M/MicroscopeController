@@ -627,7 +627,7 @@ class MicroscopeGUI:
             title="Save Image As",
             initialdir=initial_dir,
             defaultextension=".jpg",
-            filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")],
+            filetypes=[("JPEG files", "*.jpg"), ("PNG files", "*.png"), ("All files", "*.*")],
         )
 
         if not file_path:
