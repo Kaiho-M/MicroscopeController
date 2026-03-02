@@ -625,7 +625,7 @@ class MicroscopeGUI:
         file_path = filedialog.asksaveasfilename(
             title="Save Image As",
             initialdir=initial_dir,
-            defaultextension=".png",
+            defaultextension=".jpg",
             filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")],
         )
 
@@ -929,7 +929,7 @@ class MicroscopeGUI:
             font_size = max(18, int(scale_bar_width_px / 10))
 
             font = ImageFont.truetype(self.font_path, font_size) if self.font_path else ImageFont.load_default()
-            
+
             # Get text size using PIL
             text_bbox = draw.textbbox((0, 0), scale_text, font=font)
             text_width = text_bbox[2] - text_bbox[0]

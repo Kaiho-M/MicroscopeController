@@ -81,7 +81,7 @@ def test_image_concatenation():
             print(f"✓ Successfully created stitched image: {result.shape}")
 
             # Save result for visual inspection
-            output_path = f"test_output_{grid_x}x{grid_y}.png"
+            output_path = f"test_output_{grid_x}x{grid_y}.jpg"
             cv2.imwrite(output_path, result)
             print(f"  Saved to: {output_path}")
         else:
@@ -134,7 +134,7 @@ def test_enhancement_functions():
     enhanced = image_process_service.enhance_contrast(test_img)
     if enhanced is not None:
         print("✓ Contrast enhancement works")
-        cv2.imwrite("test_contrast_enhanced.png", enhanced)
+        cv2.imwrite("test_contrast_enhanced.jpg", enhanced)
     else:
         print("✗ Contrast enhancement failed")
 
@@ -142,7 +142,7 @@ def test_enhancement_functions():
     sharpened = image_process_service.apply_sharpening(test_img)
     if sharpened is not None:
         print("✓ Sharpening works")
-        cv2.imwrite("test_sharpened.png", sharpened)
+        cv2.imwrite("test_sharpened.jpg", sharpened)
     else:
         print("✗ Sharpening failed")
 

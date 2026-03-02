@@ -310,7 +310,7 @@ class StitchingController:
 
         # Save each image
         for i, image in enumerate(images):
-            filename = f"image_{i:03d}.png"
+            filename = f"image_{i:03d}.jpg"
             filepath = os.path.join(folder_path, filename)
             cv2.imwrite(filepath, image)
 
