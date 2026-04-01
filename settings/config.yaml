@@ -34,11 +34,12 @@ stitching:
   type: "phase_match"              # スティッチングタイプ (simple/phase_match/feature_based)
   overlap_ratio: 0.2        # 画像重複率 (0.0-0.5)
   max_images: 100           # 最大画像数
-  image_format: "PNG"       # 保存形式 (PNG/JPEG/TIFF)
+  image_format: "jpg"       # 保存形式 (PNG/JPEG/TIFF)
   compression_quality: 95   # 圧縮品質 (1-100)
   auto_blend: true          # 自動ブレンド
   blend_method: "linear"    # ブレンド方式 (linear/multiband/feather)
   feather_pixels: 50        # ブレンド時のフェザーピクセル数
+  alignment_scale: 0.25     # アライメント用縮小率 (0.0-1.0, 小さいほど高速)
   # アライメント品質設定
   alignment_quality:
     min_matches: 10         # 最小特徴点マッチ数

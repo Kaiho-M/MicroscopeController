@@ -636,8 +636,12 @@ class MicroscopeGUI:
 
         if self.original_image is not None:
             try:
+                # Apply scale bar overlay if enabled
+                image_to_save = self.original_image
+                if self.scale_bar_var.get():
+                    image_to_save = self.add_scale_bar_overlay(self.original_image)
                 # Save image using image service
-                self.file_service.save_image(self.original_image, file_path)
+                self.file_service.save_image(image_to_save, file_path)
                 # Remember the directory for next time
                 self.last_save_directory = os.path.dirname(file_path)
                 self.log_event(f"Image captured and saved to: {file_path}")
