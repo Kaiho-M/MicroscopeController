@@ -137,6 +137,9 @@ class MicroscopeGUI:
                 continue
 
     def setup_gui(self):
+        # Validation command that only allows integer input for Spinboxes
+        self._int_vcmd = (self.root.register(lambda P: P.isdigit()), "%P")
+
         # Main frame with less padding
         main_frame = ttk.Frame(self.root, padding="5")
         main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
@@ -228,13 +231,15 @@ class MicroscopeGUI:
         # Grid size controls
         ttk.Label(stitching_frame, text="Grid X:").grid(row=0, column=0, sticky=tk.W)
         self.grid_x_var = tk.IntVar(value=3)
-        ttk.Spinbox(stitching_frame, textvariable=self.grid_x_var, from_=1, to=100, width=6).grid(
+        ttk.Spinbox(stitching_frame, textvariable=self.grid_x_var, from_=1, to=100, width=6,
+                    validate="key", validatecommand=self._int_vcmd).grid(
             row=0, column=1, padx=2
         )
 
         ttk.Label(stitching_frame, text="Grid Y:").grid(row=0, column=2, sticky=tk.W)
         self.grid_y_var = tk.IntVar(value=3)
-        ttk.Spinbox(stitching_frame, textvariable=self.grid_y_var, from_=1, to=100, width=6).grid(
+        ttk.Spinbox(stitching_frame, textvariable=self.grid_y_var, from_=1, to=100, width=6,
+                    validate="key", validatecommand=self._int_vcmd).grid(
             row=0, column=3, padx=2
         )
 
